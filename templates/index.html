@@ -12,24 +12,22 @@
         <div class="container">
             <br>
             <div class="row">
-                <div class="col-8">
+                <div class="col-5">
                     <form action="/" method="POST">
                         <h1>Create a new CV</h1>
                         <hr>
-                        <input class="btn btn-secondary" type="submit" value="Submit">
-                        <br>
                         <br>
                         <h3>About me</h3>
                         <div class="form-group">
-                            <input type="text" class="form-control" id="fullName"  placeholder="My name">
+                            <input type="text" class="form-control" id="fullName"  placeholder="Full name">
                         </div>
                         <div class="form-group">
                             <textarea class="form-control" id="bioText" rows="4" aria-describedby="bioHelp" placeholder="A short introduction into myself"></textarea>
-                            <small id="bioHelp" class="form-text text-muted">Writing a short bio is recommended but you can disable this section underneath.</small>
+                            <small id="bioHelp" class="form-text text-muted">Writing a short bio is recommended.</small>
                         </div>
                         <div class="form-group form-check">
                             <input type="checkbox" class="form-check-input" id="showBio" checked onclick="updateBioStatus()">
-                            <label class="form-check-label" for="showBio">Show bio</label>
+                            <label class="form-check-label" for="showBio">Show bio on CV</label>
                         </div>
                         <div class="form-group">
                             <div class="row">
@@ -60,25 +58,11 @@
                             </div>
                         </div>
                         <br>
-                        <h3 style="display:inline;">My experience</h3>
-                        <a onclick="addExperience()" class="btn btn-success" style="color:#ffffff;display:inline;top:-4px;position:relative;margin-left:12px;">Add</a>
-                        <br>
-                        <br>
-                        <div id="experience">
-                        </div>
-                        <br>
-                        <br>
-                        <h3 style="display:inline;">My education</h3>
-                        <a onclick="addEducation()" class="btn btn-success" style="color:#ffffff;display:inline;top:-4px;position:relative;margin-left:12px;">Add</a>
-                        <br>
-                        <br>
-                        <div id="education">
-                        </div>
                         <br>
                         <h3>My skills</h3>
                         <div class="form-group">
                             <textarea class="form-control" id="skillList" rows="4" aria-describedby="skillHelp"></textarea>
-                            <small id="skillHelp" class="form-text text-muted">It's really important to list your key professional skills; whether learned at school, work or home.</small>
+                            <small id="skillHelp" class="form-text text-muted">It's really important to list your key skills; whether learned at school or home.</small>
                         </div>
                         <br>
                         <h3>My hobbies</h3>
@@ -89,11 +73,38 @@
                         <br>
                     </form>
                 </div>
-                <div class="col-4">
-                    <h2></h2>
+                <div class="col-1">
+                </div>
+                <div class="col-6">
+                    <a class="btn btn-primary" style="color:#ffffff;" onclick="submit()">Submit</a>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <h3 style="display:inline;">My experience</h3>
+                    <a onclick="addExperience()" class="btn btn-success" style="color:#ffffff;display:inline;top:-4px;position:relative;margin-left:12px;">Add</a>
+                    <br>
+                    <br>
+                    <div id="experience">
+                    </div>
+                    <br>
+                    <br>
+                    <h3 style="display:inline;">My education</h3>
+                    <a onclick="addEducation()" class="btn btn-success" style="color:#ffffff;display:inline;top:-4px;position:relative;margin-left:12px;">Add</a>
+                    <br>
+                    <br>
+                    <div id="education">
+                    </div>
+                    <br>
                 </div>
             </div>
+            <br>
+            <footer>
+                <i>Ansio : Coded by @sjaks.</i>
+            </footer>
         </div>
+        <br>
+        
         <script type="text/javascript" src="/static/main.js"></script>
     </body>
 </html>

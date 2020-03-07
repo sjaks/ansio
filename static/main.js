@@ -130,7 +130,7 @@ function addEducation() {
 
     // Outer card container
     var newCard = document.createElement("div");
-    newCard.id = "education" + jobCount + "Card";
+    newCard.id = "education" + educationCount + "Card";
     newCard.className = "card";
     var newCardBody = document.createElement("div");
     newCardBody.className = "card-body";

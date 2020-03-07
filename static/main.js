@@ -1,10 +1,14 @@
 var jobCount = 0;
 
+
+// Delete the desired job experience card
 function delExperience(id) {
     console.log("Removing " + id);
     document.getElementById("job" + id + "Card").remove();
 }
 
+
+// Create a new job experience card
 function addExperience() {
     jobCount++;
     var container = document.getElementById("experience");
@@ -110,6 +114,19 @@ function addExperience() {
     newCardBody.appendChild(newFormGroup);
     newCard.appendChild(newCardBody);
     container.appendChild(newCard);
+}
+
+
+// Enable or disable the bio text field according to user input
+function updateBioStatus() {
+    var checkbox = document.getElementById("showBio");
+    var textbox = document.getElementById("bioText");    
+
+    if (checkbox.checked) {
+        textbox.disabled = false;
+    } else {
+        textbox.disabled = true;
+    }
 }
 
 addExperience();

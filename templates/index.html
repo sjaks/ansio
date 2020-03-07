@@ -1,0 +1,124 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Ansio</title>
+        <meta name="description" content="Create your CV at ease.">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="">
+    </head>
+    <body>
+        <div class="container">
+            <br>
+            <div class="row">
+                <div class="col-8">
+                    <form action="/" method="POST">
+                        <h1>Create a new CV</h1>
+                        <hr>
+                        <input class="btn btn-secondary" type="submit" value="Submit">
+                        <br>
+                        <br>
+                        <h3>About me</h3>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="fullName"  placeholder="My name">
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control" id="bioText" rows="4" aria-describedby="bioHelp" placeholder="A short introduction into myself"></textarea>
+                            <small id="bioHelp" class="form-text text-muted">Writing a short bio is recommended but you can disable this section underneath.</small>
+                        </div>
+                        <div class="form-group form-check">
+                            <input type="checkbox" class="form-check-input" id="showBio" checked>
+                            <label class="form-check-label" for="showBio">Show bio</label>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-6">
+                                    <input type="email" class="form-control" id="emailAddress"  placeholder="Email">
+                                </div>
+                                <div class="col-6">
+                                    <input type="text" class="form-control" id="phoneNumber"  placeholder="Telephone">
+                                </div>
+                            </div>
+                            <br>
+                            <div class="row">
+                                <div class="col-6">
+                                    <input type="text" class="form-control" id="streetAddress"  placeholder="Sreet and house number">
+                                </div>
+                                <div class="col-6">
+                                    <input type="text" class="form-control" id="zipCode"  placeholder="Postal code">
+                                </div>
+                            </div>
+                            <br>
+                            <div class="row">
+                                <div class="col-6">
+                                    <input type="text" class="form-control" id="cityName"  placeholder="City">
+                                </div>
+                                <div class="col-6">
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <h3>My experience</h3>
+                        <div class="experience">
+                            <div class="card">
+                                <div class="card-body">
+                                    <br>
+                                    <div class="form-group">
+                                        <div class="container">
+                                            <div class="row">
+                                                <div class="col-6">
+                                                    <input type="text" class="form-control" id="job1Employer" placeholder="Employer">
+                                                </div>
+                                                <div class="col-6">
+                                                    <input type="text" class="form-control" id="job1Title"placeholder="Job title">
+                                                </div>
+                                            </div>
+                                            <br>
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <textarea class="form-control" id="job1Description" rows="2" placeholder="Description about the job"></textarea>
+                                                    <br>
+                                                    <div class="row">
+                                                        <div class="col-6">
+                                                            <input type="date" class="form-control" id="job1Start" aria-describedby="startDateHelp">
+                                                            <small id="startDateHelp" class="form-text text-muted">Start date</small>
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <input type="date" class="form-control" id="job1End" aria-describedby="endDateHelp">
+                                                            <small id="endDateHelp" class="form-text text-muted">End date</small>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <br><!-- Repeat same system from work experience to education thingy...
+                        <br>
+                        <h3>My education</h3>-->
+                        <br>
+                        <h3>My skills</h3>
+                        <div class="form-group">
+                            <textarea class="form-control" id="skillList" rows="4" aria-describedby="skillHelp"></textarea>
+                            <small id="skillHelp" class="form-text text-muted">It's really important to list your key professional skills; whether learned at school, work or home.</small>
+                        </div>
+                        <br>
+                        <h3>My hobbies</h3>
+                        <div class="form-group">
+                            <textarea class="form-control" id="hobbyList" rows="4" aria-describedby="hobbyHelp"></textarea>
+                            <small id="hobbyHelp" class="form-text text-muted">List your free time activities. These signal about you as a person.</small>
+                        </div>
+                        <br>
+                    </form>
+                </div>
+                <div class="col-4">
+                    <h2></h2>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

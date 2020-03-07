@@ -1,4 +1,9 @@
-var jobCount = 1;
+var jobCount = 0;
+
+function delExperience(id) {
+    console.log("Removing " + id);
+    document.getElementById("job" + id + "Card").remove();
+}
 
 function addExperience() {
     jobCount++;
@@ -6,6 +11,7 @@ function addExperience() {
 
     // Outer card container
     var newCard = document.createElement("div");
+    newCard.id = "job" + jobCount + "Card";
     newCard.className = "card";
     var newCardBody = document.createElement("div");
     newCardBody.className = "card-body";
@@ -56,8 +62,17 @@ function addExperience() {
     newBottomLabel2.className = "form-text text-muted";
     newBottomLabel2.innerHTML = "End date";
 
+    // Delete button
+    var deleteButton = document.createElement("a");
+    //deleteButton.href = "";
+    deleteButton.className = "btn btn-danger btn-sm";
+    deleteButton.style.color = "#ffffff";
+    deleteButton.innerHTML = "Remove";
+    deleteButton.setAttribute("onclick", "delExperience(" + jobCount + ")");
+
     // Change element properties
     newCard.style.marginTop = 20;
+    newCard.style.paddingTop = 15;
     newTopInput1.id = "job" + jobCount + "Employer";
     newTopInput1.placeholder = "Employer";
     newTopInput2.id = "job" + jobCount + "Title";
@@ -84,6 +99,8 @@ function addExperience() {
     newBottomInnerRow.appendChild(newBottomLeftCol);
     newBottomInnerRow.appendChild(newBottomRightCol);
     newBottomWideCol.appendChild(newBottomInnerRow);
+    newBottomWideCol.innerHTML += "<br>";
+    newBottomWideCol.appendChild(deleteButton);
     newBottomRow.appendChild(newBottomWideCol);
 
     newContainer.appendChild(newTopRow);
@@ -94,3 +111,5 @@ function addExperience() {
     newCard.appendChild(newCardBody);
     container.appendChild(newCard);
 }
+
+addExperience();

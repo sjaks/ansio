@@ -126,6 +126,7 @@
             var jobCount = 1;
 
             function addExperience() {
+                jobCount++;
                 var container = document.getElementById("experience");
 
                 // Outer card container
@@ -200,6 +201,7 @@
                 newTopRow.appendChild(newTopColLeft);
 
                 newBottomWideCol.appendChild(newBottomInputWide);
+                newBottomWideCol.innerHTML += "<br>";
                 newBottomLeftCol.appendChild(newBottomInput1);
                 newBottomRightCol.appendChild(newBottomInput2);
                 newBottomLeftCol.appendChild(newBottomLabel1);
@@ -210,6 +212,7 @@
                 newBottomRow.appendChild(newBottomWideCol);
 
                 newContainer.appendChild(newTopRow);
+                newContainer.innerHTML += "<br>";
                 newContainer.appendChild(newBottomRow);
                 newFormGroup.appendChild(newContainer);
                 newCardBody.appendChild(newFormGroup);

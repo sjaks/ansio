@@ -250,5 +250,28 @@ function updateBioStatus() {
     }
 }
 
+
+function listItem(target, element) {
+    if (event.key == "Enter") {
+        var item = element.value;
+        element.value = "";
+        var targetArea = document.getElementById(target);
+
+        var newSnip = document.createElement("span");
+        newSnip.className = "badge badge-primary";
+        newSnip.innerHTML = item;
+        newSnip.id = item;
+        newSnip.style.margin = 5;
+        newSnip.setAttribute("onclick", "removeItem('" + newSnip.id + "')");
+        targetArea.appendChild(newSnip);
+    }
+}
+
+
+function removeItem(name) {
+    document.getElementById(name).remove();
+}
+
+
 addExperience();
 addEducation();

@@ -7,6 +7,13 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
         <link rel="stylesheet" href="">
+        <style>
+            .badge-primary:hover {
+                background-color: red !important;
+                background: red !important;
+                cursor: pointer;
+            }
+        </style>
     </head>
     <body>
         <div class="container">
@@ -61,14 +68,16 @@
                         <br>
                         <h3>My skills</h3>
                         <div class="form-group">
-                            <textarea class="form-control" id="skillList" rows="4" aria-describedby="skillHelp"></textarea>
+                            <input onkeydown="listItem('skillarea', this)" class="form-control" id="skillInput" placeholder="Enter a skill and press Enter">
                             <small id="skillHelp" class="form-text text-muted">It's really important to list your key skills; whether learned at school or home.</small>
+                            <div id="skillarea"></div>
                         </div>
                         <br>
                         <h3>My hobbies</h3>
                         <div class="form-group">
-                            <textarea class="form-control" id="hobbyList" rows="4" aria-describedby="hobbyHelp"></textarea>
+                            <input onkeydown="listItem('hobbyarea', this)" class="form-control" id="hobbyInput" placeholder="Enter a hobby and press Enter">
                             <small id="hobbyHelp" class="form-text text-muted">List your free time activities. These signal about you as a person.</small>
+                            <div id="hobbyarea"></div>
                         </div>
                         <br>
                     </form>

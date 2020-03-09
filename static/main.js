@@ -273,7 +273,9 @@ function removeItem(name) {
 }
 
 
-function submit() {
+function submit(btn) {
+    btn.style.pointerEvents = "none";
+    showLoad();
     createPayload();
 }
 
@@ -289,7 +291,7 @@ function createPayload() {
         if (inputs[i].type == "checkbox") {
             continue;
         }
-        if (data == "") {
+        if (data == "" || data == " ") {
             data = undefined;
         }
         payload[inputs[i].id] = data;
@@ -298,10 +300,10 @@ function createPayload() {
     for (var i = 0; i < textareas.length; i++) {
         var data = textareas[i].value;
 
-        if (textareas[i].type == "checkbox") {
+        if (textareas[i].disabled == true) {
             continue;
         }
-        if (data == "") {
+        if (data == "" || data == " ") {
             data = undefined;
         }
         payload[textareas[i].id] = data;
@@ -314,9 +316,16 @@ function createPayload() {
 function sendPayload(payload) {
     var xhr = new XMLHttpRequest();
     xhr.open("POST", "/api", true);
-    xhr.send(payload); 
+    xhr.send(payload);
 }
 
+
+function showLoad() {
+    document.getElementById("cover").style.display = "flex";
+    setInterval(function() {
+        document.getElementById("cover").style.opacity = 0.6;
+    }, 400);
+}
 
 
 addExperience();

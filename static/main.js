@@ -273,5 +273,51 @@ function removeItem(name) {
 }
 
 
+function submit() {
+    createPayload();
+}
+
+
+function createPayload() {
+    var payload = {};
+    var textareas = document.getElementsByTagName("textarea");
+    var inputs = document.getElementsByTagName("input");
+    
+    for (var i = 0; i < inputs.length; i++) {
+        var data = inputs[i].value;
+
+        if (inputs[i].type == "checkbox") {
+            continue;
+        }
+        if (data == "") {
+            data = undefined;
+        }
+        payload[inputs[i].id] = data;
+    }
+
+    for (var i = 0; i < textareas.length; i++) {
+        var data = textareas[i].value;
+
+        if (textareas[i].type == "checkbox") {
+            continue;
+        }
+        if (data == "") {
+            data = undefined;
+        }
+        payload[textareas[i].id] = data;
+    }
+    payload = JSON.stringify(payload);
+    sendPayload(payload);
+}
+
+
+function sendPayload(payload) {
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "/api", true);
+    xhr.send(payload); 
+}
+
+
+
 addExperience();
 addEducation();

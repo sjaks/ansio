@@ -25,6 +25,14 @@ app = Flask(__name__)
 def index():
     # Print index.html
     return render_template("index.html")
+    
+
+
+@app.route('/api', methods=["POST"])
+def api():
+    data = request.data.decode("utf-8")
+    print(data)
+    return "success"
 
 
 

@@ -251,6 +251,7 @@ function updateBioStatus() {
 }
 
 
+// Add items from an input to a frame element for badges
 function listItem(target, element) {
     if (event.key == "Enter") {
         var item = element.value;
@@ -268,19 +269,22 @@ function listItem(target, element) {
 }
 
 
+// Remove item from a badge frame
 function removeItem(name) {
     document.getElementById(name).remove();
 }
 
 
+// Handle the press on the submit button
 function submit(btn) {
     btn.style.pointerEvents = "none";
-    showLoad();
-    createPayload();
+    showLoad(true);
+    createPayload(btn);
 }
 
 
-function createPayload() {
+// Construct the data payload for the backend
+function createPayload(btn) {
     var payload = {};
     var textareas = document.getElementsByTagName("textarea");
     var inputs = document.getElementsByTagName("input");
@@ -308,25 +312,59 @@ function createPayload() {
         }
         payload[textareas[i].id] = data;
     }
+
+    //TODO: append skills etc to the payload
     payload = JSON.stringify(payload);
-    sendPayload(payload);
+    sendPayload(payload, btn);
 }
 
 
-function sendPayload(payload) {
+// Send data to the backend
+function sendPayload(payload, btn) {
     var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function() { 
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            btn.style.pointerEvents = "auto";
+            setTimeout(function() {
+                openCVWindow(xhr.responseText);
+            }, 1000);
+        }
+    }
     xhr.open("POST", "/api", true);
     xhr.send(payload);
 }
 
 
-function showLoad() {
-    document.getElementById("cover").style.display = "flex";
-    setInterval(function() {
-        document.getElementById("cover").style.opacity = 0.6;
-    }, 400);
+// Show or hide the spinner cover
+function showLoad(show) {
+    if (show) {
+        document.getElementById("cover").style.display = "flex";
+        document.getElementById("spinner").style.display = "block";
+    } else {
+        ocument.getElementById("cover").style.display = "none";
+        document.getElementById("spinner").style.display = "none";
+    }
 }
 
 
+// Open the creation success modal
+function openCVWindow(data) {
+    // Initialize the modal and body
+    document.getElementById("spinner").style.display = "none";
+    document.body.style.overflow = "hidden";
+    var window = document.getElementById("modal");
+    window.style.display = "block";
+
+    // Parse the payload and give the hashes to the user
+    payload = JSON.parse(data);
+    document.getElementById("cvLink").href = "http://localhost:8003/cv/" + payload["hash"];
+    document.getElementById("cvUrl").value = "http://localhost:8003/cv/" + payload["hash"];
+    document.getElementById("cvEdit").href = "http://localhost:8003/" + "secret";
+    document.getElementById("cvSecret").value = "http://localhost:8003/" + "secret";
+    //TODO: implement an edit link
+}
+
+
+// Add initial frames
 addExperience();
 addEducation();

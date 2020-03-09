@@ -13,6 +13,9 @@
 from flask import Flask, render_template
 from flask import request
 import requests
+import hashlib 
+import time
+import json
 
 
 # Initiate the flask app
@@ -30,9 +33,19 @@ def index():
 
 @app.route('/api', methods=["POST"])
 def api():
+    # Decode the payload sent by the frontend
     data = request.data.decode("utf-8")
-    print(data)
-    return "success"
+
+    # Generate a hash for the CV
+    epoch = str(time.time())
+    s = epoch + data
+    cvhash = hashlib.md5(s.encode()).hexdigest()
+    
+    # Add the hash to the payload
+    data = json.loads(data)
+    data["hash"] = cvhash
+
+    return json.dumps(data)
 
 
 

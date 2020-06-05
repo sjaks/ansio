@@ -1,3 +1,13 @@
+//       _       _        
+//  ___ (_) __ _| | _____  sjaks@github
+// / __|| |/ _` | |/ / __| jaks.fi
+// \__ \| | (_| |   <\__ \ ------------
+// |___// |\__,_|_|\_\___/ ansio
+//    |__/                
+//
+// BRIEF:
+// Main Javascript file for ansio
+
 var jobCount = 0;
 var educationCount = 0;
 

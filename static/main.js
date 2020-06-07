@@ -369,8 +369,8 @@ function openCVWindow(data) {
     payload = JSON.parse(data);
     document.getElementById("cvLink").href = "http://localhost:8003/cv?id=" + payload["hash"];
     document.getElementById("cvUrl").value = "http://localhost:8003/cv?id=" + payload["hash"];
-    document.getElementById("cvEdit").href = "http://localhost:8003?edit=" + "secret";
-    document.getElementById("cvSecret").value = "http://localhost:8003?edit=" + "secret";
+    document.getElementById("cvEdit").href = "http://localhost:8003?edit=" + payload["secret"];
+    document.getElementById("cvSecret").value = "http://localhost:8003?edit=" + payload["secret"];
     //TODO: implement an edit link
 }
 

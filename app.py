@@ -16,6 +16,8 @@ import requests
 import hashlib 
 import time
 import json
+import string
+import random
 
 
 # Set constants
@@ -30,8 +32,21 @@ app = Flask(__name__)
 # Root path
 @app.route('/')
 def index():
+    try:
+        cv_id = request.args.get('edit')[18:]
+        cv_secret = request.args.get('edit')[0:17]
+        
+        # TODO: implement secret checking
+
+        with open(RESUMEPATH + cv_id, 'r') as resume_file:
+            data = resume_file.read()
+
+        
+    except:
+        data = ""
+
     # Print index.html
-    return render_template("index.html")
+    return render_template("index.html", cv_data=data)
     
 
 
@@ -41,9 +56,11 @@ def api():
     data = request.data.decode("utf-8")
 
     # Generate a hash for the CV
+    rnd = ''.join(random.choices(string.ascii_uppercase + string.digits, k=18))
     epoch = str(time.time())
     s = epoch + data
     cvhash = hashlib.md5(s.encode()).hexdigest()
+    secret = rnd + cvhash
 
     # Save data
     with open(RESUMEPATH + cvhash, 'w') as resume_file:
@@ -52,6 +69,7 @@ def api():
     # Add the hash to the payload
     data = json.loads(data)
     data["hash"] = cvhash
+    data["secret"] = secret
 
     return json.dumps(data)
 
@@ -59,9 +77,8 @@ def api():
 
 @app.route('/cv', methods=["GET"])
 def cv_show():
-    cv_id = request.args.get('id')
-
     try:
+        cv_id = request.args.get('id')
         with open(RESUMEPATH + cv_id, 'r') as resume_file:
             data = resume_file.read()
     except:
